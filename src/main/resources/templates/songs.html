@@ -1,17 +1,35 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <th:block th:replace="~{fragments :: head}"></th:block>
     <title>Songs</title>
 </head>
 <body>
 
-<div th:insert="navigation :: nav"></div>
+<div th:insert="~{navigation :: nav}"></div>
 
-<p th:text="${songs}"></p>
+<div class="container mt-4">
+    <h1>Best Songs</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <!-- Add other headers if necessary -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="song : ${songs}">
+            <td th:text="${song.id}">1</td>
+            <td>
+                <a th:href="@{/songs/{id}(id=${song.id})}" th:text="${song.title}">Song Title</a>
+            </td>
+            <!-- Add other columns if necessary -->
+        </tr>
+        </tbody>
+    </table>
+    <a href="/" class="btn btn-primary mt-2">Back to Home</a>
+</div>
 
 </body>
 </html>

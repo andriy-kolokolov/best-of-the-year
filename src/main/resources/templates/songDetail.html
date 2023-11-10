@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <th:block th:replace="fragments :: head"></th:block>
+
+    <title>Song Details</title>
+
+</head>
+<body>
+
+<div class="container mt-4">
+    <h1>Movie Details</h1>
+    <div th:if="${song != null}">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <!-- Add other columns if you have more attributes -->
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${song.id}">Movie ID</td>
+                <td th:text="${song.title}">Movie Title</td>
+                <!-- Add other columns if you have more attributes -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${song != null}">
+        <p>Song not found.</p>
+    </div>
+    <a href="/movies" class="btn btn-primary">Back to Songs List</a>
+</div>
+
+</body>
+</html>
